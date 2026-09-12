@@ -2,13 +2,16 @@
 #include <cassert>
 #include <initializer_list>
 
+// scalar type 또는 포인터타입만 Node의 data로 받을 예정이라 함수 매개변수로 const T data
+// 받으면 됨. 근데 기분상 const T& data 하고싶어서 그렇게 했음. 실제로 쓴다고 하면 const T data로 변경하여 사용.
+
 template <typename T>
 class List
 {
 public:
 	struct Node
 	{
-		T _data; // 큰 객체가 여기에 직접 들어오는 일은 없다고 가정. 클래스 타입 들어와도 보통 포인터로 다룰 예정.
+		T _data;
 		Node* _prev;
 		Node* _next;
 	};
