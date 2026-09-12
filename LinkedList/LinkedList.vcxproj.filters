@@ -33,4 +33,9 @@
       <Filter>소스 파일\Profiler</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="profile.txt">
+      <Filter>소스 파일\Profiler</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
