@@ -141,8 +141,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="profile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="profile.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

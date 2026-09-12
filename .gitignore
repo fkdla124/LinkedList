@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/LinkedList/profile.cpp
+/LinkedList/profile.h
+/LinkedList/profile.txt
