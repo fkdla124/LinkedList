@@ -145,7 +145,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="profile.cpp" />
-    <ClCompile Include="test.cpp" />
+    <ClCompile Include="PerformanceTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="AI_TEST.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="profile.txt" />

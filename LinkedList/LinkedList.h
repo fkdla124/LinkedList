@@ -143,6 +143,9 @@ public:
 	}
 	List<T>& operator=(const List<T>& src)
 	{
+		if (this == &src)
+			return *this;
+
 		clear();
 
 		for (auto it = src.begin(); it != src.end(); ++it)
@@ -176,13 +179,16 @@ public:
 	}
 	List<T>& operator=(List<T>&& src) noexcept
 	{
+		if (this == &src)
+			return *this;
+
 		clear();
 
 		if (src.empty())
 		{
 			_head._next = &_tail;
 			_tail._prev = &_head;
-			return;
+			return *this;
 		}
 
 		// src에서 노드들 옮겨오기.

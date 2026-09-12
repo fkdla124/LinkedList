@@ -26,11 +26,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="PerformanceTest.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="profile.cpp">
       <Filter>소스 파일\Profiler</Filter>
+    </ClCompile>
+    <ClCompile Include="AI_TEST.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
