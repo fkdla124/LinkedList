@@ -2,9 +2,6 @@
 #include <cassert>
 #include <initializer_list>
 
-// scalar type 또는 포인터타입만 Node의 data로 받을 예정이라 함수 매개변수로 const T data 받으면 됨.
-// 근데 기분상 const T& data 하고싶어서 그렇게 했음. 실제로 쓴다고 하면 목적에 맞게 변경하여 사용
-
 template <typename T>
 class List
 {
@@ -130,6 +127,36 @@ public:
 		_head._next = &_tail;
 		_tail._prev = &_head;
 	}
+	List(Iterator first, Iterator last)
+	{
+		_head._next = &_tail;
+		_tail._prev = &_head;
+
+		for (first; first != last; ++first)
+		{
+			push_back(*first);
+		}
+	}
+	List(std::initializer_list<T> iList)
+	{
+		_head._next = &_tail;
+		_tail._prev = &_head;
+
+		for (auto it = iList.begin(); it != iList.end(); ++it)
+		{
+			push_back(*it);
+		}
+	}
+	List(size_t count, const T& value)
+	{
+		_head._next = &_tail;
+		_tail._prev = &_head;
+
+		for (size_t i = 0; i < count; i++)
+		{
+			push_back(value);
+		}
+	}
 
 	List(const List<T>& src)
 	{
@@ -206,37 +233,6 @@ public:
 		return *this;
 	}
 
-	List(Iterator first, Iterator last)
-	{
-		_head._next = &_tail;
-		_tail._prev = &_head;
-
-		for (first; first != last; ++first)
-		{
-			push_back(*first);
-		}
-	}
-	List(std::initializer_list<T> iList)
-	{
-		_head._next = &_tail;
-		_tail._prev = &_head;
-
-		for (auto it = iList.begin(); it != iList.end(); ++it)
-		{
-			push_back(*it);
-		}
-	}
-	List(size_t count, const T& value)
-	{
-		_head._next = &_tail;
-		_tail._prev = &_head;
-
-		for (size_t i = 0; i < count; i++)
-		{
-			push_back(value);
-		}
-	}
-
 	~List()
 	{
 		for (Iterator it = begin(); it != end();)
@@ -254,6 +250,10 @@ public:
 	{
 		return ConstIterator{ _head._next };
 	}
+	ConstIterator cbegin() const
+	{
+		return ConstIterator{ _head._next };
+	}
 
 	Iterator end()
 	{
@@ -261,6 +261,10 @@ public:
 	}
 
 	ConstIterator end() const
+	{
+		return ConstIterator{ &_tail };
+	}
+	ConstIterator cend() const
 	{
 		return ConstIterator{ &_tail };
 	}
@@ -523,26 +527,26 @@ public:
 	}
 
 	// 디버깅용
-	void print()
-	{
-		if (empty())
-		{
-			std::cout << "list empty : " << std::boolalpha << empty() << "\n";
-			std::cout << "list size : " << size() << "\n";
-			std::cout << "\n\n";
-			return;
-		}
+	//void print()
+	//{
+	//	if (empty())
+	//	{
+	//		std::cout << "list empty : " << std::boolalpha << empty() << "\n";
+	//		std::cout << "list size : " << size() << "\n";
+	//		std::cout << "\n\n";
+	//		return;
+	//	}
 
-		std::cout << "list empty : " << std::boolalpha << empty() << "\n";
-		std::cout << "list size : " << size() << "\n";
-		std::cout << "list front : " << front() << "\n";
-		std::cout << "list back : " << back() << "\n";
-		for (auto it = begin(); it != end(); ++it)
-		{
-			std::cout << *it << " ";
-		}
-		std::cout << "\n\n";
-	}
+	//	std::cout << "list empty : " << std::boolalpha << empty() << "\n";
+	//	std::cout << "list size : " << size() << "\n";
+	//	std::cout << "list front : " << front() << "\n";
+	//	std::cout << "list back : " << back() << "\n";
+	//	for (auto it = begin(); it != end(); ++it)
+	//	{
+	//		std::cout << *it << " ";
+	//	}
+	//	std::cout << "\n\n";
+	//}
 
 private:
 	size_t _size = 0;

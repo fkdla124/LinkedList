@@ -1,5 +1,5 @@
 #include <iostream>
-#include "LinkedList.h"
+#include "List.h"
 #include <list>
 
 #define PROFILE

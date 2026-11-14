@@ -1,5 +1,5 @@
 #include <iostream>
-#include "LinkedList.h"
+#include "List.h"
 
 // AI가 짜준 테스트코드 
 
